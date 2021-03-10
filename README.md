@@ -101,3 +101,28 @@ Algorithms**
             1. MinMax Scaling: Substract the min value and then divide by max minus min ``sklearn provide MinMaxScaler``
             2. Standardization: Substract mean value (so standardized values always have zero mean) and then divide by standard deviation so that resulting distribution has unit variance ```            2. Standardization: Substract mean value (so standardized values always have zero mean) and then divide by standard deviation so that resulting distribution has unit variance ``sklearn StandardScaler``
     
+## Day - 3
+
+11. Transformation Pipelines
+
+    ```from sklearn.pipeline import Pipeline```
+
+    To Transform columns ```from sklearn.compose import ColumnTransformer```
+
+12. Select and Train a Model
+
+13. Try different models and test the model accuracy and select the one which performs best
+
+14. Fine tune the model
+
+    1. Grid Search: In order to find the optimum hyperparameters for the model, instead of testing each combination manually, we can use scikit-learn's ```GridSearchCV```
+
+    Eg: 
+    ```
+    from sklearn.model_selection import GridSearchCV
+    param_grid = [{'n_estimators': [3, 10, 30], 'max_features': [2, 4, 6, 8]},
+    {'bootstrap': [False], 'n_estimators': [3, 10], 'max_features': [2, 3,4]},]
+    forest_reg = RandomForestRegressor()
+    grid_search = GridSearchCV(forest_reg, param_grid, cv=5,
+    scoring='neg_mean_squared_error',return_train_score=True)
+    grid_search.fit(housing_prepared, housing_labels)```
