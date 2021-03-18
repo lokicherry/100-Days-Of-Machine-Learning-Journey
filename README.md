@@ -126,3 +126,38 @@ Algorithms**
     grid_search = GridSearchCV(forest_reg, param_grid, cv=5,
     scoring='neg_mean_squared_error',return_train_score=True)
     grid_search.fit(housing_prepared, housing_labels)```
+
+## Day - 4
+
+### Classification:
+* A perfect classifier would have
+only true positives and true negatives, so its confusion matrix would have
+nonzero values only on its main diagonal (top left to bottom right)
+  
+**Confusion Matrix:**
+
+[![N|ConfusionMatrix](./images/confusion-matrix.png)]
+
+```            
+Precision = TP/(TP+FP)
+Recall    = TP/(TP+FN)
+
+The F1 score is the harmonic mean of precision and recall
+
+F1  = 2/((1/precision)+(1/recall))
+    = 2 * (precision*recall) / (precision + recall)
+```
+Note: If you trained a classifier to detect videos that are safe for kids, you would
+probably prefer a classifier that rejects many good videos (low recall) but
+keeps only safe ones (high precision), rather than a classifier that has a
+much higher recall but lets a few really bad videos show up in your
+product (in such cases, you may even want to add a human pipeline to
+check the classifier’s video selection). On the other hand, suppose you
+train a classifier to detect shoplifters in surveillance images: it is probably
+fine if your classifier has only 30% precision as long as it has 99% recall
+(sure, the security guards will get a few false alerts, but almost all
+shoplifters will get caught).
+
+Increasing ⬆ precision reduces ⬇
+recall, and vice versa. This is called the **precision/recall trade-off**.
+
